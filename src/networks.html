@@ -1,0 +1,38 @@
+---
+layout: page
+title: Networks
+permalink: /networks/
+---
+
+
+<div class="row justify-content-md-center">
+	{% for network in site.networks %}
+	<div class="card p-2 m-1" 
+		style="width: 18rem;">
+		<div class="d-flex flex-column align-items-center card-body">
+			<img src="{{ network.icon | relative_url }}" 
+				width="64px"
+				heigh="64px">
+			<h5 class="card-title">{{ network.title }}</h5>
+			<div class="container-fluid p-0 m-0">
+				<div class="row">
+					<div class="col">
+						<p class="text-center fs-3 fw-bold p-0 m-0">${{ network.market_cap | formatprice }}</p>
+						<p class="text-center fs-6">Market Cap</p>
+					</div>
+					<div class="col">
+						<p class="text-center fs-3 fw-bold p-0 m-0">{{ network.stake_apr }}%</p>
+						<p class="text-center fs-6">APR</p>
+					</div>
+				</div>
+			</div>
+			<div>
+				<a href="{{ network.url }}" 
+					class="btn btn-primary">Read More</a>
+			</div>
+		</div>
+	</div>
+  {% endfor %}
+</div>
+
+

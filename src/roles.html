@@ -1,0 +1,20 @@
+---
+layout: page
+title: Organization Roles
+permalink: /roles/
+---
+
+
+
+
+<img src="{{ "/assets/uml/roles.png" | relative_url }}">
+
+<ul>
+  {% for role in site.roles %}
+    <li>
+      <a href="{{ role.url }}">{{ role.title }}</a>
+    </li>
+  {% endfor %}
+</ul>
+
+
