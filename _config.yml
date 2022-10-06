@@ -32,7 +32,7 @@ description: >-
 ################################################################################
 # Where things are
 ################################################################################
-source: ./src
+source: .
 destination: ./_site
 plugins_dir: _plugins # takes an array of strings and loads plugins in that order
 layouts_dir: _layouts
