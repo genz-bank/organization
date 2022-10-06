@@ -1,0 +1,19 @@
+---
+layout: page
+title: Calculator
+permalink: /calculator/
+---
+
+
+<script type="application/json" id="roles">
+[{% for role in site.roles %}
+{
+    "title": "{{role.title}}"
+},
+{% endfor %}{}]
+</script>
+
+<script src="{{ '/assets/js/owl.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/calculator.js' | relative_url }}"></script>
+
+<div id="calculatorBody"></div>

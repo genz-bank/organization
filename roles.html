@@ -4,17 +4,27 @@ title: Organization Roles
 permalink: /roles/
 ---
 
+<section>
+	<div class="row justify-content-md-center">
+	{% include_relative assets/uml/roles.svg %}
+	</div>
+</section>
 
 
-
-<img src="{{ "/assets/uml/roles.png" | relative_url }}">
-
-<ul>
-  {% for role in site.roles %}
-    <li>
-      <a href="{{ role.url }}">{{ role.title }}</a>
-    </li>
-  {% endfor %}
-</ul>
-
-
+<section>
+	<div class="row justify-content-md-center">
+		{% for role in site.roles %}
+		<div class="card p-2 m-1" 
+			style="width: 18rem;">
+			<div class="d-flex flex-column align-items-center card-body">
+				<h5 class="card-title">{{ role.abbreviation }}</h5>
+				<p>{{ role.title }}</p>
+				<div>
+					<a href="{{ role.url | relative_url }}" 
+						class="btn btn-primary">Read More</a>
+				</div>
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+</section>

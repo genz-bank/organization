@@ -1,0 +1,48 @@
+---
+layout: default
+---
+
+<div class="container-fluid">
+	<section class="row">
+		<div class="col">
+			<h1>
+				<img src="{{ page.icon | relative_url }}" 
+					width="64px"
+					heigh="64px">
+				{{ page.title | escape }}
+			</h1>
+			<p>{{ page.description | escape }}</p>
+		</div>
+	</section>
+	
+	
+	<section class="row">
+		<div class="col">
+			<h2>Attributes</h2>
+			<table class="table">
+				<thead>
+					<tr>
+						<td>Title</td>
+						<td>Value</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Cost</td>
+						<td>{{ page.cost | upcase }}</td>
+					</tr>
+					<tr>
+						<td>Throughput</td>
+						<td>{{ page.throughput | upcase }}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</section>
+
+	<section class="row">
+		<div class="col">
+		{{ content }}
+		</div>
+	</section>
+</div>

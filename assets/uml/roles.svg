@@ -1,0 +1,73 @@
+<svg width="310" height="540" color-interpolation="auto" color-rendering="auto" fill="black" font-family="'Dialog'" font-size="12px" image-rendering="auto" shape-rendering="auto" stroke="black" stroke-linecap="square" stroke-miterlimit="10" text-rendering="auto" version="1.1" viewBox="260 -10 310 540" xmlns="http://www.w3.org/2000/svg">
+ <g transform="translate(360,390)" fill="#fff" fill-opacity="0" stroke="#fff" stroke-opacity="0">
+  <circle cx="60.5" cy="7.5" r="7" clip-path="url(#clipPath2)" stroke="none"/>
+ </g>
+ <g transform="translate(360,390)">
+  <g fill="none">
+   <circle cx="60.5" cy="7.5" r="7" clip-path="url(#clipPath2)"/>
+   <path d="m39.5 21.5h42" clip-path="url(#clipPath2)"/>
+   <path d="m60.5 14.5v28" clip-path="url(#clipPath2)"/>
+   <path d="m60.5 42.5-14 28" clip-path="url(#clipPath2)"/>
+   <path d="m60.5 42.5 14 28" clip-path="url(#clipPath2)"/>
+  </g>
+  <text x="46" y="92.9375" clip-path="url(#clipPath2)" font-family="sans-serif" font-size="14px" stroke="none" xml:space="preserve">CEO</text>
+  <text x="12" y="108.875" clip-path="url(#clipPath2)" font-family="sans-serif" font-size="14px" stroke="none" xml:space="preserve">«Management»</text>
+ </g>
+ <g transform="translate(280,10)" fill="#fff" fill-opacity="0" stroke="#fff" stroke-opacity="0">
+  <circle cx="50.5" cy="7.5" r="7" clip-path="url(#clipPath3)" stroke="none"/>
+ </g>
+ <g transform="translate(280,10)">
+  <g fill="none">
+   <circle cx="50.5" cy="7.5" r="7" clip-path="url(#clipPath3)"/>
+   <path d="m29.5 21.5h42" clip-path="url(#clipPath3)"/>
+   <path d="m50.5 14.5v28" clip-path="url(#clipPath3)"/>
+   <path d="m50.5 42.5-14 28" clip-path="url(#clipPath3)"/>
+   <path d="m50.5 42.5 14 28" clip-path="url(#clipPath3)"/>
+  </g>
+  <text x="36" y="92.9375" clip-path="url(#clipPath3)" font-family="sans-serif" font-size="14px" stroke="none" xml:space="preserve"><a href="http://google.com">SPO</a></text>
+  <text x="12" y="108.875" clip-path="url(#clipPath3)" font-family="sans-serif" font-size="14px" stroke="none" xml:space="preserve">«Execution»</text>
+ </g>
+ <g transform="translate(360,200)" fill="#fff" fill-opacity="0" stroke="#fff" stroke-opacity="0">
+  <circle cx="60.5" cy="7.5" r="7" clip-path="url(#clipPath2)" stroke="none"/>
+ </g>
+ <g transform="translate(360,200)">
+  <g fill="none">
+   <circle cx="60.5" cy="7.5" r="7" clip-path="url(#clipPath2)"/>
+   <path d="m39.5 21.5h42" clip-path="url(#clipPath2)"/>
+   <path d="m60.5 14.5v28" clip-path="url(#clipPath2)"/>
+   <path d="m60.5 42.5-14 28" clip-path="url(#clipPath2)"/>
+   <path d="m60.5 42.5 14 28" clip-path="url(#clipPath2)"/>
+  </g>
+  <text x="46" y="92.9375" clip-path="url(#clipPath2)" font-family="sans-serif" font-size="14px" stroke="none" xml:space="preserve">CTO</text>
+  <text x="12" y="108.875" clip-path="url(#clipPath2)" font-family="sans-serif" font-size="14px" stroke="none" xml:space="preserve">«Management»</text>
+ </g>
+ <g transform="translate(450,10)" fill="#fff" fill-opacity="0" stroke="#fff" stroke-opacity="0">
+  <circle cx="50.5" cy="7.5" r="7" clip-path="url(#clipPath3)" stroke="none"/>
+ </g>
+ <g transform="translate(450,10)">
+  <g fill="none">
+   <circle cx="50.5" cy="7.5" r="7" clip-path="url(#clipPath3)"/>
+   <path d="m29.5 21.5h42" clip-path="url(#clipPath3)"/>
+   <path d="m50.5 14.5v28" clip-path="url(#clipPath3)"/>
+   <path d="m50.5 42.5-14 28" clip-path="url(#clipPath3)"/>
+   <path d="m50.5 42.5 14 28" clip-path="url(#clipPath3)"/>
+  </g>
+  <text x="28" y="92.9375" clip-path="url(#clipPath3)" font-family="sans-serif" font-size="14px" stroke="none" xml:space="preserve">IT Man</text>
+  <text x="12" y="108.875" clip-path="url(#clipPath3)" font-family="sans-serif" font-size="14px" stroke="none" xml:space="preserve">«Execution»</text>
+ </g>
+ <g transform="translate(410,320)">
+  <path d="m10.5 11.5v49" clip-path="url(#clipPath4)" fill="none"/>
+  <path d="m4 22.258 6.5-11.258 6.5 11.258z" clip-path="url(#clipPath4)" fill="#fff" stroke="none"/>
+  <path d="m4 22.258 6.5-11.258 6.5 11.258z" clip-path="url(#clipPath4)" fill="none"/>
+ </g>
+ <g transform="translate(320,130)">
+  <path d="M 11.2071,11.2071 70.5,70.5" clip-path="url(#clipPath5)" fill="none"/>
+  <path d="m14.218 23.411-3.3646-12.557 12.557 3.3646z" clip-path="url(#clipPath5)" fill="#fff" stroke="none"/>
+  <path d="m14.218 23.411-3.3646-12.557 12.557 3.3646z" clip-path="url(#clipPath5)" fill="none"/>
+ </g>
+ <g transform="translate(430,110)">
+  <path d="M 50.0528,11.3944 10.5,90.5" clip-path="url(#clipPath6)" fill="none"/>
+  <path d="m39.428 18.11 10.849-7.1629 0.7789 12.977z" clip-path="url(#clipPath6)" fill="#fff" stroke="none"/>
+  <path d="m39.428 18.11 10.849-7.1629 0.7789 12.977z" clip-path="url(#clipPath6)" fill="none"/>
+ </g>
+</svg>
