@@ -1,0 +1,143 @@
+---
+title: Staking Business
+icon: "/assets/images/networks-logo/cosmos.svg"
+---
+
+
+<section 
+	class="container-fluid py-5">
+	<h1>Business Model Canvas</h1>
+	<div class="bmc">
+		<div id="partners">
+			<h3>Key Partners</h3>
+		</div>
+		<div id="activities">
+			<h3>Key Activities</h3>
+			<div class="note">Setup Nodes</div>
+			<div class="note">Maintain Nodes</div>
+		</div>
+		<div id="resources">
+			<h3>Key Resources</h3>
+			<div class="note">Infrastructure</div>
+			<div class="note">Assets (Coins)</div>
+		</div>
+		<div id="value">
+			<h3>Value Proposition</h3>
+			<div class="note">Staking Pool</div>
+		</div>
+		<div id="relationship">
+			<h3>Customer Relationship</h3>
+			<div class="note">Website</div>
+		</div>
+		<div id="channels">
+			<h3>Channels</h3>
+			<div class="note">Wallets</div>
+		</div>
+		<div id="customers">
+			<h3>Customers Segments</h3>
+			<div class="note">Holders</div>
+		</div>
+
+		<div id="cost">
+			<h3>
+				<a href="#cost_structure">Cost Structure</a>
+			</h3>
+			<div class="note">
+				<a href="{{ '/' | relative_url }}#roles">CEO, CTO, IT Man and SPO</a>
+			</div>
+			<div class="note">
+				<a href="{{ '/' | relative_url }}#infrastructure">Hardware and Infrastructure</a>
+			</div>
+			<div class="note green">
+				<a href="{{ '/' | relative_url }}#networks">Setup</a>
+			</div>
+			<div class="note green">
+				<a href="{{ '/' | relative_url }}#networks">Start up asset</a>
+			</div>
+		</div>
+		<div id="revenue">
+			<h3>
+				<a href="{{ '/' | relative_url }}#revenue_streams">Revenue Streams</a>
+			</h3>
+			<div class="note green">
+				<a href="{{ '/' | relative_url }}#revenue_streams_staking">Staking</a>
+			</div>
+			<div class="note green">
+				<a href="{{ '/' | relative_url }}#revenue_streams_fee">Staking Fee</a>
+			</div>
+		</div>
+	</div>
+</section>
+
+
+<section 
+	class="container-fluid py-5">
+	<h2>Calculator</h2>
+	<div id="calculatorBody"></div>
+
+<script type="application/json" id="roles-data">
+[{% for role in site.roles %}
+{
+	"id": "{{ role.id }}",
+	"title": "{{ role.title }}",
+	"abbreviation": "{{ role.abbreviation }}",
+	"cost": {{ role.cost }},
+	"throughput": {{ role.throughput }},
+	"url": "{{ role.url | relative_url }}",
+	"count": 0
+},
+{% endfor %}{}]
+</script>
+
+
+<script type="application/json" id="networks-data">
+[{% for network in site.networks %}
+{
+	"id": "{{ network.id }}",
+	"title": "{{ network.title }}",
+	"icon": "{{ network.icon | relative_url }}",
+	"token": "{{ network.token }}",
+	"tokenPrice": "{{ network.token_price }}",
+	"url": "{{ network.url | relative_url }}",
+	"count": 0,
+
+	"stakingMin": {{ network.stake_min }},
+	"apr": {{ network.stake_apr }},
+	"epoch": {{ network.network_epoch }}, 
+	
+	"rewardConstant": {{ network.node_reward_constant}},
+	"rewardPercentage": {{ network.node_reward_percentage}},
+
+	"networkSymbol": "{{ network.network_symbol }}", 
+	"networkTitle" : "{{ network.network_title }}",
+	"networkFee" : {{ network.network_fee }},
+	
+	"nodeStartValue": {{ network.node_start_value }},
+	"nodeHardware" : "{{ network.node_hardware }}",
+
+	"p2pStaked": {{ network.p2p_staked_value }}
+},
+{% endfor %}{}]
+</script>
+
+
+<script type="application/json" id="resources-data">
+[{% for resources in site.resources %}
+{
+	"id": "{{ resources.id }} ", 
+	"url": "{{ resources.url | relative_url }}",
+	"name": "{{ resources.name }}",
+	"title": "{{ resources.title }}",
+	"CPU": {{ resources.CPU }},
+	"RAM": {{ resources.RAM }},
+	"HDD": {{ resources.HDD }},
+	"SSD": {{ resources.SSD }},
+	"cost": {{ resources.cost }}
+},
+{% endfor %}{}]
+</script>
+
+
+<script src="{{ '/assets/js/owl.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/calculator-staking.js' | relative_url }}"></script>
+</section>

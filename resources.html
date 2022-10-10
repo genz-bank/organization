@@ -1,0 +1,26 @@
+---
+layout: page
+title: Resources
+permalink: /resources/
+---
+
+
+<div class="row justify-content-md-center">
+	{% for resource in site.resources %}
+	<div class="card p-2 m-1" 
+		style="width: 18rem;">
+		<div class="d-flex flex-column align-items-center card-body">
+			<img src="{{ business.icon | relative_url }}" 
+				width="64px"
+				heigh="64px">
+			<h5 class="card-title">{{ resource.title }}</h5>
+			<div>
+				<a href="{{ resource.url | relative_url }}" 
+					class="btn btn-primary">Read More</a>
+			</div>
+		</div>
+	</div>
+	{% endfor %}
+</div>
+
+

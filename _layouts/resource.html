@@ -1,0 +1,49 @@
+---
+layout: default
+---
+
+<section class="container-fluid">
+	<div class="row">
+		<div class="col">
+			<h1>
+				<img src="{{ page.icon | relative_url }}" 
+					width="64px"
+					heigh="64px">
+				{{ page.title | escape }}
+			</h1>
+			<p>{{ page.description | escape }}</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col">
+			<table class="table">
+				<thead>
+					<tr>
+						<td>Title</td>
+						<td>Value</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>CPU Cores</td>
+						<td>{{ page.CPU | upcase }}</td>
+					</tr>
+					<tr>
+						<td>RAM</td>
+						<td>{{ page.RAM | upcase }} GB</td>
+					</tr>
+					<tr>
+						<td>HDD</td>
+						<td>{{ page.HDD | upcase }} TB</td>
+					</tr>
+					<tr>
+						<td>SSD</td>
+						<td>{{ page.SSD | upcase }} TB</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</section>
+
+{{ content }}

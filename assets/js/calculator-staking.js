@@ -52,8 +52,6 @@
 				<th scope="row"><img width="32px" height="32px" t-att-src="props.network.icon" /></th>
 				<td><a t-att-href="props.network.url"><t t-esc="props.network.title"/></a></td>
 				<td><t t-esc="props.network.tokenPrice"/></td>
-				<td><t t-esc="props.network.count"/></td>
-				<td><t t-esc="props.network.tokenPrice * props.network.count"/></td>
 				<td>
 					<button type="button"
 						class="btn btn-link"
@@ -82,8 +80,6 @@
 				<th scope="col"></th>
 				<th scope="col">Title</th>
 				<th scope="col">Cost/Month (USDT)</th>
-				<th scope="col">required count</th>
-				<th scope="col">partial sum</th>
 				<th scope="col">Actions</th>
 			</tr>
 			</thead>
@@ -117,8 +113,6 @@
 				<th scope="col">Abbreviation</th>
 				<th scope="col">Title</th>
 				<th scope="col">Cost/Month (USDT)</th>
-				<th scope="col">required count</th>
-				<th scope="col">partial sum</th>
 			</tr>
 			</thead>
 			<tbody>
@@ -127,8 +121,6 @@
 				<th scope="row"><a t-att-href="role.url"><t t-esc="role.abbreviation"/></a></th>
 				<td><a t-att-href="role.url"><t t-esc="role.title"/></a></td>
 				<td><t t-esc="role.cost"/></td>
-				<td><t t-esc="role.count"/></td>
-				<td><t t-esc="role.cost * role.count"/></td>
 			</tr>
 			</t>
 			</tbody>
@@ -325,10 +317,7 @@
 	const APP_TEMPLATE = xml /* xml */`
 	<section 
 		class="container-fluid py-5">
-		<ResourceTable resources="env.resourcesDb" />
 		<NetworkTable networks="env.networksDb" />
-		<RolesTable roles="env.rolesDb" />
-
 		<InitCost
 			networks="env.networksDb"
 			roles="env.rolesDb" 

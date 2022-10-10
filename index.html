@@ -2,10 +2,6 @@
 layout: home
 ---
 
-<link 
-	rel="stylesheet" 
-	href="{{ '/assets/home.css' | relative_url }}" >
-
 <section 
 	class="container-fluid py-5">
 	<h1>GenZ Business Model Canvas</h1>
@@ -17,72 +13,14 @@ layout: home
 		proposition, infrastructure, customers, and finances, assisting 
 		businesses to align their activities by illustrating potential 
 		trade-offs.
-		Each segment is illustrated later in related sections.
 	</p>
-	<div class="bmc">
-		<div id="partners">
-			<h3>Key Partners</h3>
-		</div>
-		<div id="activities">
-			<h3>Key Activities</h3>
-			<div class="note">Setup Nodes</div>
-			<div class="note">Maintain Nodes</div>
-		</div>
-		<div id="resources">
-			<h3>Key Resources</h3>
-			<div class="note">Infrastructure</div>
-			<div class="note">Assets (Coins)</div>
-		</div>
-		<div id="value">
-			<h3>Value Proposition</h3>
-			<div class="note">Staking Pool</div>
-		</div>
-		<div id="relationship">
-			<h3>Customer Relationship</h3>
-			<div class="note">Website</div>
-		</div>
-		<div id="channels">
-			<h3>Channels</h3>
-			<div class="note">Wallets</div>
-		</div>
-		<div id="customers">
-			<h3>Customers Segments</h3>
-			<div class="note">Holders</div>
-		</div>
-
-		<div id="cost">
-			<h3>
-				<a href="#cost_structure">Cost Structure</a>
-			</h3>
-			<div class="note">
-				<a href="#roles">CEO, CTO, IT Man and SPO</a>
-			</div>
-			<div class="note">
-				<a href="#infrastructure">Hardware and Infrastructure</a>
-			</div>
-			<div class="note green">
-				<a href="#networks">Setup</a>
-			</div>
-			<div class="note green">
-				<a href="#networks">Start up asset</a>
-			</div>
-		</div>
-		<div id="revenue">
-			<h3>
-				<a href="#revenue_streams">Revenue Streams</a>
-			</h3>
-			<div class="note green">
-				<a href="#revenue_streams_staking">Staking</a>
-			</div>
-			<div class="note green">
-				<a href="#revenue_streams_fee">Staking Fee</a>
-			</div>
-		</div>
-	</div>
+	
+			<a 
+				type="button" 
+				class="btn btn-link"
+				href="{{ '/businesses/' | relative_url }}">Read more about models</a>
 </section>
 
-
-<hr/>
 <section 
 	id="cost_structure"
 	class="container-fluid py-5">
@@ -147,7 +85,7 @@ layout: home
 			<a 
 				type="button" 
 				class="btn btn-link"
-				href="{{ '/hardware/' | relative_url }}">Read more about Infrastructure</a>
+				href="{{ '/resources/' | relative_url }}">Read more about Infrastructure</a>
 		</div>
 		<div class="text-md-right col-12 col-md-5 order-first">
 			<img 
@@ -189,7 +127,6 @@ layout: home
 
 
 
-<hr/>
 <section 
 	id="revenue_streams"
 	class="container-fluid py-5">

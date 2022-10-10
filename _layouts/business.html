@@ -1,0 +1,24 @@
+---
+layout: default
+---
+
+
+<link 
+	rel="stylesheet" 
+	href="{{ '/assets/home.css' | relative_url }}" >
+
+<section class="container-fluid">
+	<div class="row">
+		<div class="col">
+			<h1>
+				<img src="{{ page.icon | relative_url }}" 
+					width="64px"
+					heigh="64px">
+				{{ page.title | escape }}
+			</h1>
+			<p>{{ page.description | escape }}</p>
+		</div>
+	</div>
+</section>
+
+{{ content }}

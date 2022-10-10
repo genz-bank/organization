@@ -21,7 +21,7 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 ################################################################################
-title: GenZ Bank Organization
+title: GenZ Bank
 logo: /assets/logo.svg
 email: mostafa.barmshory@gmail.com
 description: >- 
@@ -51,6 +51,9 @@ collections:
     output: true
   resources:
     output: true
+  businesses:
+    output: true
+  
 
 
 
@@ -166,6 +169,18 @@ defaults:
     values:
       layout: "role"
       category: "roles"
+  -
+    scope:
+      type: "businesses"
+    values:
+      layout: "business"
+      category: "business"
+  -
+    scope:
+      type: "resources"
+    values:
+      layout: "resource"
+      category: "resource"
 
 
 #liquid:
@@ -204,9 +219,10 @@ ignore_theme_config: true
 # and configure order of the links.
 #
 header_pages:
-  - calculator.html
+  - businesses.html
   - roles.html
   - networks.html
+  - resources.html
   - about.html
 
 #
