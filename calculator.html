@@ -5,13 +5,68 @@ permalink: /calculator/
 ---
 
 
-<script type="application/json" id="roles">
+<script type="application/json" id="roles-data">
 [{% for role in site.roles %}
 {
-    "title": "{{role.title}}"
+	"id": "{{ role.id }}",
+	"title": "{{ role.title }}",
+	"abbreviation": "{{ role.abbreviation }}",
+	"cost": {{ role.cost }},
+	"throughput": {{ role.throughput }},
+	"url": "{{ role.url | relative_url }}",
+	"count": 0
 },
 {% endfor %}{}]
 </script>
+
+
+<script type="application/json" id="networks-data">
+[{% for network in site.networks %}
+{
+	"id": "{{ network.id }}",
+	"title": "{{ network.title }}",
+	"icon": "{{ network.icon | relative_url }}",
+	"token": "{{ network.token }}",
+	"tokenPrice": "{{ network.token_price }}",
+	"url": "{{ network.url | relative_url }}",
+	"count": 0,
+
+	"stakingMin": {{ network.stake_min }},
+	"apr": {{ network.stake_apr }},
+	"epoch": {{ network.network_epoch }}, 
+	
+	"rewardConstant": {{ network.node_reward_constant}},
+	"rewardPercentage": {{ network.node_reward_percentage}},
+
+	"networkSymbol": "{{ network.network_symbol }}", 
+	"networkTitle" : "{{ network.network_title }}",
+	"networkFee" : {{ network.network_fee }},
+	
+	"nodeStartValue": {{ network.node_start_value }},
+	"nodeHardware" : "{{ network.node_hardware }}",
+
+	"p2pStaked": {{ network.p2p_staked_value }}
+},
+{% endfor %}{}]
+</script>
+
+
+<script type="application/json" id="resources-data">
+[{% for resources in site.resources %}
+{
+	"id": "{{ resources.id }} ", 
+	"url": "{{ resources.url | relative_url }}",
+	"name": "{{ resources.name }}",
+	"title": "{{ resources.title }}",
+	"CPU": {{ resources.CPU }},
+	"RAM": {{ resources.RAM }},
+	"HDD": {{ resources.HDD }},
+	"SSD": {{ resources.SSD }},
+	"cost": {{ resources.cost }}
+},
+{% endfor %}{}]
+</script>
+
 
 <script src="{{ '/assets/js/owl.js' | relative_url }}"></script>
 <script src="{{ '/assets/js/calculator.js' | relative_url }}"></script>

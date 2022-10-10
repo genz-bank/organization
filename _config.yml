@@ -204,9 +204,10 @@ ignore_theme_config: true
 # and configure order of the links.
 #
 header_pages:
-  - about.html
+  - calculator.html
   - roles.html
   - networks.html
+  - about.html
 
 #
 # You can add links to the accounts you have on other sites, with respective 
