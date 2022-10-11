@@ -183,7 +183,7 @@
 	const MaintainCost_TEMPLATE = xml /* xml */`
 	<section 
 		class="container-fluid">
-		<h2>Setup Cost</h2>
+		<h2>Maintain Cost</h2>
 		<div>$$ Cost_{Maintain} = \SUM_{i=1}^{n} C_{Host} + [{n}/{N_{SPO}}]* C_{SPO} + [n/N_{IT}*C_{IT}] + C_{CTO} + C_{CEO} $$</div>
 		<p> Where: </p>
 
@@ -266,8 +266,8 @@
 		<h2>Staking Revenue Stream</h2>
 		<div>$$ Revenue_{Staking} = \SUM_{i=1}^{n} [
 				( 30 / EPOCH^i ) * R_{Constant}^i + 
-				(R_{Percentage}^i * Stake_{P2P}^i * APR^i)/12 + 
-				(Stake_{Min}^i * APR^i)/12
+				(R_{Percentage}^i * Stake_{P2P}^i * APR_{nominate}^i)/12 + 
+				(Stake_{Min}^i * APR_{actual}^i)/12
 			] * Token_{price}^i  $$</div>
 		<p> Where: </p>
 
@@ -300,10 +300,11 @@
 			this.env.networksDb.forEach(network => {
 				if(network.id) {
 					// Constant revenue
-					revenueStaking += (30 * network.rewardConstant / network.epoch) * network.tokenPrice;
-					revenueStaking += network.p2pStaked * network.rewardPercentage * network.apr / 12.0;
-					revenueStaking += network.nodeStartValue * network.apr / 12.0;
-					revenueStaking = revenueStaking * network.tokenPrice;
+					var coinValue = 0;
+					coinValue += (30 * network.rewardConstant / network.epoch) * network.tokenPrice;
+					coinValue += (network.p2pStaked * network.apr * network.rewardPercentage) / (12.0*100*100);
+					coinValue += network.nodeStartValue * (network.apr - network.inflation) / 12.0;
+					revenueStaking = revenueStaking + coinValue * network.tokenPrice;
 				}
 			});
 			this.state.revenueStaking = revenueStaking;
