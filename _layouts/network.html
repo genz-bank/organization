@@ -31,14 +31,52 @@ layout: default
 						<td>Main Coin Symbol</td>
 						<td>{{ page.network_symbol | upcase }}</td>
 					</tr>
+
 					<tr>
-						<td>Market Cap</td>
-						<td>{{ page.market_cap | formatprice }}</td>
+						<td>Network Symbol</td>
+						<td>{{ page.network_symbol }}</td>
+					</tr>
+					<tr>
+						<td>Network Title</td>
+						<td>{{ page.network_title }}</td>
+					</tr>
+					<tr>
+						<td>Network Fee</td>
+						<td>{{ page.network_fee }}</td>
+					</tr>
+					<tr>
+						<td>Network Inflation</td>
+						<td>{{ page.network_inflation }}</td>
+					</tr>
+					
+					
+					
+					<tr>
+						<td>P2P Wallets</td>
+						<td>
+							<ul>
+							{% for wallet in page.p2p_wallets %}
+								<li>{{ wallet }} </li>
+							{% endfor %}
+							</ul>
+						</td>
+					</tr>
+					<tr>
+						<td>Slashing Policies</td>
+						<td>
+							<ul>
+							{% for policy in page.slashing %}
+								<li>{{ policy }} </li>
+							{% endfor %}
+							</ul>
+						</td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
 	</section>
+	
+
 
 	<section class="row">
 		<div class="col">

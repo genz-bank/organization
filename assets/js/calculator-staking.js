@@ -5,10 +5,69 @@
 
 	const { useState } = owl.hooks;
 
+	const rolesDb = JSON.parse(document.getElementById('roles-data').textContent);
+	const networkDb = JSON.parse(document.getElementById('networks-data').textContent);
+	const resourcesDb = JSON.parse(document.getElementById('resources-data').textContent);
+
+	function computeNetworkRevenueInMounth(network) {
+		let coinValue = 0;
+		coinValue += (30 * network.validator.reward.constant / network.network.epoch) * network.network.token.price;
+		coinValue += (network.competitors.p2p.staked * network.staking.apr * network.validator.reward.percentage) / (12.0 * 100 * 100);
+		coinValue += network.validator.staked * (network.staking.apr - network.network.inflation) / 12.0;
+		return coinValue;
+	}
+
+	function computeSetupCostInUSDT(network) {
+		return 150 + (network.validator.staked + network.network.fee) * network.network.token.price;
+	}
+
+	function computeMaintainCostInUSDT(networks) {
+		let costMaintain = 0;
+		let n = networks.length;
+		// Add network resource price
+		networks.forEach(network =>
+			costMaintain += getResource(network).cost
+		);
+
+		// SPO cost
+		let spo = getRole("SPO");
+		costMaintain += Math.ceil(n / spo.throughput) * spo.cost;
+
+		// IT cost
+		let it = getRole("IT");
+		costMaintain += Math.ceil(n / it.throughput) * it.cost;
+
+		// CTO cost
+		let cto = getRole("CTO");
+		costMaintain += cto.cost;
+
+		// CEO cost
+		let ceo = getRole("CEO");
+		costMaintain += ceo.cost;
+
+		return costMaintain;
+	}
+
+
+	function getResource(network) {
+		let list = resourcesDb.filter(resource => resource.name === network.validator.hardware);
+		if (list.length) {
+			return list[0]
+		}
+		console.warn("Resource with name " + network.validator.hardware + " not found");
+	}
+
+	function getRole(abbreviation) {
+		let list = rolesDb.filter(role => role.abbreviation === abbreviation);
+		if (list.length) {
+			return list[0]
+		}
+		console.warn("Role with name " + abbreviation + " not found");
+	}
 	// -------------------------------------------------------------------------
 	// NetworkTable
 	// -------------------------------------------------------------------------
-	const ResourceTable_TEMPLATE =  xml /* xml */`
+	const ResourceTable_TEMPLATE = xml /* xml */`
 	<section 
 		class="container-fluid">
 		<h2> Resources and Hardwares </h2>
@@ -43,7 +102,7 @@
 	class ResourceTable extends Component {
 		static template = ResourceTable_TEMPLATE;
 	}
-	
+
 	// -------------------------------------------------------------------------
 	// NetworkTable
 	// -------------------------------------------------------------------------
@@ -51,17 +110,25 @@
 			<tr>
 				<th scope="row"><img width="32px" height="32px" t-att-src="props.network.icon" /></th>
 				<td><a t-att-href="props.network.url"><t t-esc="props.network.title"/></a></td>
-				<td><t t-esc="props.network.tokenPrice"/></td>
-				<td>
-					<button type="button"
-						class="btn btn-link"
-						t-on-click="deleteNetwork"><i class="fa fa-trash"></i></button>
-				</td>
+				<td><t t-esc="props.network.network.token.price"/></td>
+				<td><t t-esc="state.setupCost"/></td>
+				<td><t t-esc="state.computedRevenue"/></td>
 			</tr>
 	`;
 
 	class NetworkTableRow extends Component {
 		static template = NetworkTableRow_TEMPLATE;
+		static props = ['network'];
+		state = useState({
+			computedRevenue: 0,
+			setupCost: 0
+		});
+
+		constructor(parent, props) {
+			super(parent, props);
+			this.state.computedRevenue = computeNetworkRevenueInMounth(props.network);
+			this.state.setupCost = computeSetupCostInUSDT(props.network);
+		}
 
 		deleteNetwork() {
 			alert(this.props.network.title)
@@ -79,13 +146,14 @@
 			<tr>
 				<th scope="col"></th>
 				<th scope="col">Title</th>
-				<th scope="col">Cost/Month (USDT)</th>
-				<th scope="col">Actions</th>
+				<th scope="col">Token Price</th>
+				<th scope="col">Setup Cost</th>
+				<th scope="col">Revenue (USDT/Month)</th>
 			</tr>
 			</thead>
 			<tbody>
 			<t t-foreach="props.networks" t-as="network" t-key="network.id">
-			<NetworkTableRow network="network" t-if="network.id" />
+			<NetworkTableRow network="network" />
 			</t>
 			</tbody>
 		</table>
@@ -166,13 +234,8 @@
 
 		constructor() {
 			super()
-			var costSetup = 0;
-			this.env.networksDb.forEach(network => {
-				if(network.id) {
-					// Constant cost
-					costSetup += 150 + (network.nodeStartValue + network.networkFee) * network.tokenPrice;
-				}
-			});
+			let costSetup = 0;
+			this.env.networksDb.forEach(network => costSetup += computeSetupCostInUSDT(network));
 			this.state.costSetup = costSetup;
 		}
 	}
@@ -204,56 +267,16 @@
 
 	class MaintainCost extends Component {
 		static template = MaintainCost_TEMPLATE;
+		static props = ['networks'];
 		state = useState({
 			costMaintain: 0
 		});
 
-		constructor() {
-			super()
-			var costMaintain = 0;
-			var n = this.env.networksDb.length -1;
-			// Add network resource price
-			this.env.networksDb.forEach(network => {
-				if(network.id) {
-					// Constant cost
-					costMaintain += this.getResource(network).cost;
-				}
-			});
-			
-			// SPO cost
-			var spo = this.getRole("SPO");
-			costMaintain += Math.ceil(n / spo.throughput) * spo.cost;
-			
-			// IT cost
-			var it = this.getRole("IT");
-			costMaintain += Math.ceil(n / it.throughput) * it.cost;
-			
-			// CTO cost
-			var cto = this.getRole("CTO");
-			costMaintain += cto.cost;
-			
-			// CEO cost
-			var ceo = this.getRole("CEO");
-			costMaintain += ceo.cost;
-			
-			this.state.costMaintain = costMaintain;
+		constructor(parent, props) {
+			super(parent, props);
+			this.state.costMaintain = computeMaintainCostInUSDT(props.networks);
 		}
-		
-		getResource (network) {
-			var list = this.env.resourcesDb.filter(resource => resource.name === network.nodeHardware );
-			if(list.length) {
-				return list[0]
-			}
-			console.warn("Resource with name " + network.nodeHardware + " not found");
-		}
-		
-		getRole(abbreviation){
-			var list = this.env.rolesDb.filter(role => role.abbreviation === abbreviation);
-			if(list.length) {
-				return list[0]
-			}
-			console.warn("Role with name " + abbreviation + " not found");
-		}
+
 	}
 
 
@@ -296,21 +319,13 @@
 
 		constructor() {
 			super()
-			var revenueStaking = 0;
-			this.env.networksDb.forEach(network => {
-				if(network.id) {
-					// Constant revenue
-					var coinValue = 0;
-					coinValue += (30 * network.rewardConstant / network.epoch) * network.tokenPrice;
-					coinValue += (network.p2pStaked * network.apr * network.rewardPercentage) / (12.0*100*100);
-					coinValue += network.nodeStartValue * (network.apr - network.inflation) / 12.0;
-					revenueStaking = revenueStaking + coinValue * network.tokenPrice;
-				}
-			});
+			let revenueStaking = 0;
+			this.env.networksDb.forEach(network =>
+				revenueStaking += computeNetworkRevenueInMounth(network) * network.network.token.price
+			);
 			this.state.revenueStaking = revenueStaking;
 		}
 	}
-
 
 	// -------------------------------------------------------------------------
 	// App Component
@@ -353,9 +368,9 @@
 	// Setup code
 	function setup() {
 		App.env.localStorage = window.localStorage;
-		App.env.rolesDb = JSON.parse(document.getElementById('roles-data').textContent);
-		App.env.networksDb = JSON.parse(document.getElementById('networks-data').textContent);
-		App.env.resourcesDb = JSON.parse(document.getElementById('resources-data').textContent);
+		App.env.rolesDb = rolesDb;
+		App.env.networksDb = networkDb;
+		App.env.resourcesDb = resourcesDb;
 		const app = new App();
 		app.mount(document.getElementById('calculatorBody'));
 	}

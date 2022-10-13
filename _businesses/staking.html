@@ -91,34 +91,17 @@ icon: "/assets/images/networks-logo/cosmos.svg"
 
 
 <script type="application/json" id="networks-data">
-[{% for network in site.networks %}
-{
-	"id": "{{ network.id }}",
-	"title": "{{ network.title }}",
-	"icon": "{{ network.icon | relative_url }}",
-	"token": "{{ network.token }}",
-	"tokenPrice": "{{ network.token_price }}",
-	"url": "{{ network.url | relative_url }}",
-	"count": 0,
-
-	"stakingMin": {{ network.stake_min }},
-	"apr": {{ network.stake_apr }},
-	"inflation": {{network.network_inflation }},
-	"epoch": {{ network.network_epoch }}, 
-	
-	"rewardConstant": {{ network.node_reward_constant}},
-	"rewardPercentage": {{ network.node_reward_percentage}},
-
-	"networkSymbol": "{{ network.network_symbol }}", 
-	"networkTitle" : "{{ network.network_title }}",
-	"networkFee" : {{ network.network_fee }},
-	
-	"nodeStartValue": {{ network.node_start_value }},
-	"nodeHardware" : "{{ network.node_hardware }}",
-
-	"p2pStaked": {{ network.p2p_staked_value }}
-},
-{% endfor %}{}]
+[{% for network in site.networks %}{
+	"title": {{ network.title | jsonify }},
+	"description": {{ network.description | jsonify }},
+	"icon": {{ network.icon | relative_url  | jsonify }},
+	"url":  {{ network.url | relative_url  | jsonify }},
+	"network": {{ network.network | jsonify }},
+	"sites": {{ network.sites | jsonify }},
+	"staking": {{ network.staking | jsonify }},
+	"validator": {{ network.validator | jsonify }},
+	"competitors": {{ network.competitors | jsonify }}
+} {% unless forloop.last %},{% endunless %}{% endfor %}]
 </script>
 
 

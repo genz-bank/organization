@@ -181,6 +181,12 @@ defaults:
     values:
       layout: "resource"
       category: "resource"
+  -
+    scope:
+      type: "posts"
+    values:
+      layout: "post"
+      category: "post"
 
 
 #liquid:
